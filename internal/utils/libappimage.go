@@ -42,6 +42,9 @@ func NewLibAppImageBindings() (LibAppImage, error) {
 	bindings := libAppImageBind{}
 	var err error
 	bindings.lib, err = loadLibAppImage()
+	if err != nil {
+		return nil, err
+	}
 
 	err = bindings.lib.Sym("appimage_shall_not_be_integrated", &bindings.appimage_shall_not_be_integrated)
 	if err != nil {
